@@ -8,47 +8,54 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 220 25% 8%;
-    --foreground: 210 40% 98%;
+    --background: 15 30% 5%;
+    --foreground: 30 100% 95%;
 
-    --card: 220 25% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 20 40% 10%;
+    --card-foreground: 30 100% 95%;
 
-    --popover: 220 25% 12%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 20 35% 8%;
+    --popover-foreground: 30 100% 95%;
 
-    --primary: 190 100% 50%;
-    --primary-foreground: 220 25% 8%;
+    --primary: 25 100% 60%;
+    --primary-foreground: 15 30% 5%;
 
-    --secondary: 260 60% 60%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 30 95% 50%;
+    --secondary-foreground: 15 30% 5%;
 
-    --muted: 220 20% 20%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 20 25% 20%;
+    --muted-foreground: 30 50% 70%;
 
-    --accent: 190 100% 50%;
-    --accent-foreground: 220 25% 8%;
+    --accent: 35 100% 55%;
+    --accent-foreground: 15 30% 5%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 30 100% 95%;
 
     --success: 142 76% 36%;
-    --success-foreground: 210 40% 98%;
+    --success-foreground: 30 100% 95%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 190 100% 50%;
+    --border: 25 80% 40%;
+    --input: 20 30% 15%;
+    --ring: 25 100% 60%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
+
+    /* Glass Effect */
+    --glass-bg: rgba(20, 10, 5, 0.4);
+    --glass-border: rgba(255, 140, 60, 0.2);
+    --glass-blur: 16px;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(190, 100%, 50%), hsl(260, 60%, 60%));
-    --gradient-subtle: linear-gradient(180deg, hsl(220, 25%, 10%), hsl(220, 25%, 8%));
-    --gradient-glow: radial-gradient(circle at 50% 0%, hsl(190, 100%, 50%, 0.15), transparent 50%);
+    --gradient-primary: linear-gradient(135deg, hsl(25, 100%, 60%), hsl(35, 100%, 55%));
+    --gradient-subtle: linear-gradient(180deg, rgba(30, 15, 5, 0.5), rgba(15, 10, 5, 0.3));
+    --gradient-glow: radial-gradient(circle at 50% 0%, hsla(25, 100%, 60%, 0.15), transparent 70%);
+    --gradient-orange: radial-gradient(circle at top right, hsla(25, 100%, 50%, 0.1), transparent 50%);
 
     /* Shadows */
-    --shadow-glow: 0 0 40px hsl(190, 100%, 50%, 0.3);
-    --shadow-card: 0 10px 30px -10px hsl(220, 25%, 4%, 0.5);
+    --shadow-glow: 0 0 60px hsla(25, 100%, 60%, 0.4), 0 0 30px hsla(35, 100%, 55%, 0.2);
+    --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
+    --shadow-glass: 0 8px 32px 0 rgba(255, 140, 60, 0.1);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -62,5 +69,30 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsla(25, 100%, 40%, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsla(35, 100%, 50%, 0.08) 0%, transparent 50%),
+      linear-gradient(180deg, hsl(15, 30%, 5%) 0%, hsl(10, 25%, 3%) 100%);
+    background-attachment: fixed;
+  }
+}
+
+/* Glass Morphism Utility Classes */
+@layer utilities {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+  }
+  
+  .glass-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .glass-hover:hover {
+    background: rgba(30, 15, 5, 0.6);
+    border-color: rgba(255, 140, 60, 0.4);
+    box-shadow: var(--shadow-glass);
   }
 }

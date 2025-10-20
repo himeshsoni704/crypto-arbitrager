@@ -19,7 +19,7 @@ interface PathResultsProps {
 export const PathResults = ({ results, source, target, startAmount }: PathResultsProps) => {
   if (results.length === 0) {
     return (
-      <Card className="p-8 text-center backdrop-blur-sm bg-card/50 border-border">
+      <Card className="p-8 text-center glass shadow-glass">
         <p className="text-muted-foreground">
           No legal paths found from {source} to {target}. Try different currencies.
         </p>
@@ -52,9 +52,9 @@ export const PathResults = ({ results, source, target, startAmount }: PathResult
         />
       ))}
 
-      <Card className="p-6 backdrop-blur-sm bg-card/50 border-primary/50 border-2">
+      <Card className="p-6 glass border-primary/50 border-2 shadow-glow">
         <div className="flex items-center gap-3">
-          <TrendingUp className="w-8 h-8 text-primary" />
+          <TrendingUp className="w-8 h-8 text-primary drop-shadow-[0_0_12px_rgba(255,140,60,0.8)]" />
           <div>
             <p className="text-sm text-muted-foreground">Best Path Result</p>
             <p className="text-2xl font-bold text-primary">
@@ -91,10 +91,10 @@ const PathResultCard = ({
   const finalAmount = startAmount * result.multiplier;
 
   return (
-    <Card className={`backdrop-blur-sm bg-card/50 border-border overflow-hidden ${isBest ? 'border-primary/50 border-2' : ''}`}>
+    <Card className={`glass overflow-hidden ${isBest ? 'border-primary/50 border-2 shadow-glow' : 'border-primary/20'}`}>
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger className="w-full">
-          <div className="p-6 hover:bg-muted/50 transition-colors">
+          <div className="p-6 hover:bg-primary/5 transition-colors glass-hover">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${isBest ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
@@ -132,11 +132,11 @@ const PathResultCard = ({
         </CollapsibleTrigger>
 
         <CollapsibleContent>
-          <div className="border-t border-border p-6 bg-muted/20">
+          <div className="border-t border-primary/20 p-6 glass">
             <h4 className="text-sm font-semibold text-foreground mb-3">Step-by-Step Breakdown</h4>
             <div className="space-y-2">
               {result.breakdown.map((step, idx) => (
-                <div key={idx} className="flex items-center justify-between p-3 rounded-lg bg-background/50 border border-border/50">
+                <div key={idx} className="flex items-center justify-between p-3 rounded-lg glass border-primary/10">
                   <div className="flex items-center gap-3">
                     <span className="text-xs text-muted-foreground">#{idx + 1}</span>
                     <span className="font-mono text-sm">

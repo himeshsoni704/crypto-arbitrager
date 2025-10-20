@@ -39,9 +39,9 @@ export const ConversionSearch = ({ onSearch, isLoading }: ConversionSearchProps)
   };
 
   return (
-    <Card className="p-6 backdrop-blur-sm bg-card/50 border-border shadow-card">
+    <Card className="p-6 glass glass-hover shadow-glass">
       <div className="flex items-center gap-2 mb-6">
-        <Search className="w-5 h-5 text-primary" />
+        <Search className="w-5 h-5 text-primary drop-shadow-[0_0_8px_rgba(255,140,60,0.6)]" />
         <h2 className="text-xl font-semibold text-foreground">Conversion Search</h2>
       </div>
       
@@ -50,10 +50,10 @@ export const ConversionSearch = ({ onSearch, isLoading }: ConversionSearchProps)
           <div className="space-y-2">
             <Label htmlFor="source" className="text-sm text-muted-foreground">From</Label>
             <Select value={source} onValueChange={setSource}>
-              <SelectTrigger id="source" className="bg-background/50">
+              <SelectTrigger id="source" className="glass">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="bg-popover border-border max-h-[300px]">
+              <SelectContent className="glass border-primary/30 max-h-[300px] backdrop-blur-xl">
                 {ALL_CURRENCIES.map((currency) => (
                   <SelectItem key={currency} value={currency}>
                     {currency}
@@ -72,17 +72,17 @@ export const ConversionSearch = ({ onSearch, isLoading }: ConversionSearchProps)
               onChange={(e) => setAmount(e.target.value)}
               step="0.01"
               min="0.01"
-              className="bg-background/50"
+              className="glass"
             />
           </div>
           
           <div className="space-y-2">
             <Label htmlFor="target" className="text-sm text-muted-foreground">To</Label>
             <Select value={target} onValueChange={setTarget}>
-              <SelectTrigger id="target" className="bg-background/50">
+              <SelectTrigger id="target" className="glass">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent className="bg-popover border-border max-h-[300px]">
+              <SelectContent className="glass border-primary/30 max-h-[300px] backdrop-blur-xl">
                 {ALL_CURRENCIES.map((currency) => (
                   <SelectItem key={currency} value={currency}>
                     {currency}
@@ -95,7 +95,7 @@ export const ConversionSearch = ({ onSearch, isLoading }: ConversionSearchProps)
         
         <Button 
           type="submit" 
-          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-glow glass-hover"
           disabled={isLoading || source === target}
         >
           {isLoading ? (

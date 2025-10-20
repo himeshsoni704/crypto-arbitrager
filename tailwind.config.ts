@@ -56,10 +56,15 @@ export default {
         'gradient-primary': 'var(--gradient-primary)',
         'gradient-subtle': 'var(--gradient-subtle)',
         'gradient-glow': 'var(--gradient-glow)',
+        'gradient-orange': 'var(--gradient-orange)',
       },
       boxShadow: {
         'glow': 'var(--shadow-glow)',
         'card': 'var(--shadow-card)',
+        'glass': 'var(--shadow-glass)',
+      },
+      backdropBlur: {
+        'glass': 'var(--glass-blur)',
       },
       transitionTimingFunction: {
         'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',

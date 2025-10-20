@@ -97,8 +97,8 @@ const Index = () => {
         <ConversionSearch onSearch={handleSearch} isLoading={isLoading} />
 
         {isLoading && (
-          <Card className="p-8 text-center backdrop-blur-sm bg-card/50 border-border">
-            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary" />
+          <Card className="p-8 text-center glass shadow-glass">
+            <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4 text-primary drop-shadow-[0_0_12px_rgba(255,140,60,0.8)]" />
             <p className="text-foreground font-semibold mb-2">Processing...</p>
             <p className="text-sm text-muted-foreground">{loadingMessage}</p>
           </Card>
@@ -114,7 +114,7 @@ const Index = () => {
         )}
       </div>
 
-      <footer className="border-t border-border py-8 mt-16">
+      <footer className="border-t border-primary/20 py-8 mt-16 glass">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
           <p>Powered by ExchangeRate API & Binance | Legal compliance via Gemini</p>
           <p className="mt-2">Multi-hop currency arbitrage with {MAX_HOPS}-trade maximum</p>
