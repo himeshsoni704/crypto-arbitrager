@@ -8,57 +8,57 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 15 30% 5%;
-    --foreground: 30 100% 95%;
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
 
-    --card: 20 40% 10%;
-    --card-foreground: 30 100% 95%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 20 35% 8%;
-    --popover-foreground: 30 100% 95%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 25 100% 60%;
-    --primary-foreground: 15 15% 10%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
 
-    --secondary: 30 95% 50%;
-    --secondary-foreground: 15 30% 5%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 20 25% 20%;
-    --muted-foreground: 30 50% 70%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 217 11% 65%;
 
-    --accent: 35 100% 55%;
-    --accent-foreground: 15 30% 5%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 30 100% 95%;
+    --destructive-foreground: 210 40% 98%;
 
     --success: 142 76% 36%;
-    --success-foreground: 30 100% 95%;
+    --success-foreground: 210 40% 98%;
 
-    --border: 25 80% 40%;
-    --input: 20 30% 15%;
-    --ring: 25 100% 60%;
+    --border: 217 33% 27%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
 
     --radius: 1rem;
 
     /* Glass Effect */
-    --glass-bg: rgba(20, 10, 5, 0.4);
-    --glass-border: rgba(255, 140, 60, 0.2);
+    --glass-bg: rgba(10, 15, 25, 0.4);
+    --glass-border: rgba(96, 165, 250, 0.2);
     --glass-blur: 16px;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(25, 100%, 55%), hsl(35, 100%, 60%));
-    --gradient-button: linear-gradient(135deg, rgba(255, 140, 60, 0.85), rgba(255, 165, 80, 0.85));
-    --gradient-subtle: linear-gradient(180deg, rgba(30, 15, 5, 0.5), rgba(15, 10, 5, 0.3));
-    --gradient-glow: radial-gradient(circle at 50% 0%, hsla(25, 100%, 60%, 0.15), transparent 70%);
-    --gradient-orange: radial-gradient(circle at top right, hsla(25, 100%, 50%, 0.1), transparent 50%);
-    --gradient-circular: radial-gradient(circle at center, hsla(25, 100%, 65%, 0.2) 0%, hsla(30, 100%, 60%, 0.1) 40%, transparent 70%);
+    --gradient-primary: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(212, 100%, 65%));
+    --gradient-button: linear-gradient(135deg, rgba(96, 165, 250, 0.85), rgba(120, 180, 255, 0.85));
+    --gradient-subtle: linear-gradient(180deg, rgba(15, 20, 30, 0.5), rgba(10, 15, 25, 0.3));
+    --gradient-glow: radial-gradient(circle at 50% 0%, hsla(217, 91%, 60%, 0.15), transparent 70%);
+    --gradient-orange: radial-gradient(circle at top right, hsla(217, 91%, 60%, 0.1), transparent 50%);
+    --gradient-circular: radial-gradient(circle at center, hsla(217, 91%, 65%, 0.2) 0%, hsla(212, 100%, 60%, 0.1) 40%, transparent 70%);
 
     /* Shadows */
-    --shadow-glow: 0 0 60px hsla(25, 100%, 60%, 0.4), 0 0 30px hsla(35, 100%, 55%, 0.2);
+    --shadow-glow: 0 0 60px hsla(217, 91%, 60%, 0.4), 0 0 30px hsla(212, 100%, 65%, 0.2);
     --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
-    --shadow-glass: 0 8px 32px 0 rgba(255, 140, 60, 0.1);
-    --shadow-button: 0 4px 20px rgba(255, 140, 60, 0.4);
+    --shadow-glass: 0 8px 32px 0 rgba(96, 165, 250, 0.1);
+    --shadow-button: 0 4px 20px rgba(96, 165, 250, 0.4);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -73,10 +73,10 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     background-image: 
-      radial-gradient(circle at 50% 50%, hsla(25, 100%, 65%, 0.25) 0%, hsla(30, 100%, 60%, 0.12) 30%, transparent 60%),
-      radial-gradient(circle at 20% 80%, hsla(25, 100%, 40%, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, hsla(35, 100%, 50%, 0.08) 0%, transparent 50%),
-      linear-gradient(180deg, hsl(15, 30%, 5%) 0%, hsl(10, 25%, 3%) 100%);
+      radial-gradient(circle at 50% 50%, hsla(217, 91%, 60%, 0.25) 0%, hsla(212, 100%, 65%, 0.12) 30%, transparent 60%),
+      radial-gradient(circle at 20% 80%, hsla(217, 91%, 40%, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsla(212, 100%, 50%, 0.08) 0%, transparent 50%),
+      linear-gradient(180deg, hsl(222, 47%, 11%) 0%, hsl(220, 50%, 8%) 100%);
     background-attachment: fixed;
   }
 }

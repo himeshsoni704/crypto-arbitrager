@@ -38,8 +38,8 @@ export const Hero = ({ onGetStarted }: HeroProps) => {
         </div>
       </div>
       
-      {/* Animated grid background with orange tint */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,140,60,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,140,60,0.1)_1px,transparent_1px)] bg-[size:24px_24px] opacity-20" />
+      {/* Animated grid background with blue tint */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(96,165,250,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(96,165,250,0.1)_1px,transparent_1px)] bg-[size:24px_24px] opacity-20" />
     </div>
   );
 };
