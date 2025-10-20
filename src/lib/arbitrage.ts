@@ -62,8 +62,8 @@ export async function fetchFiatRates(base: string): Promise<Record<string, numbe
 }
 
 // Fetch crypto exchange rates from Binance
-export async function fetchCryptoRates(): Promise<Map<string, number>> {
-  const rates = new Map<string, number>();
+export async function fetchCryptoRates(): Promise<Array<[string, string, number]>> {
+  const rates: Array<[string, string, number]> = [];
   
   try {
     const controller = new AbortController();
@@ -74,15 +74,18 @@ export async function fetchCryptoRates(): Promise<Map<string, number>> {
     
     const data = await response.json();
     
+    // Match only symbols that are direct concatenation of tokens in ALL
     for (const item of data) {
       const symbol = item.symbol;
       const price = parseFloat(item.price);
       
-      // Match symbols that are direct concatenation of currencies
+      if (price === 0) continue;
+      
+      // Try all permutations
       for (const c1 of ALL_CURRENCIES) {
         for (const c2 of ALL_CURRENCIES) {
           if (c1 !== c2 && symbol === `${c1}${c2}`) {
-            rates.set(`${c1}-${c2}`, price);
+            rates.push([c1, c2, price]);
           }
         }
       }
@@ -148,8 +151,9 @@ export async function buildGraph(onProgress?: (message: string) => void): Promis
     edges: new Map(),
   };
   
-  const addEdge = (src: string, dst: string, rate: number, legal: boolean) => {
+  const addTrade = (src: string, dst: string, rate: number, geminiPairs: Set<string>) => {
     const effective = rate * (1 - FEE);
+    const legal = checkLegality(src, dst, geminiPairs);
     
     if (!graph.edges.has(src)) {
       graph.edges.set(src, new Map());
@@ -181,8 +185,7 @@ export async function buildGraph(onProgress?: (message: string) => void): Promis
     for (const dst of FIATS) {
       if (src !== dst && fiatRatesDict[src][dst]) {
         const rate = fiatRatesDict[src][dst];
-        const legal = checkLegality(src, dst, geminiPairs);
-        addEdge(src, dst, rate, legal);
+        addTrade(src, dst, rate, geminiPairs);
       }
     }
   }
@@ -190,34 +193,32 @@ export async function buildGraph(onProgress?: (message: string) => void): Promis
   onProgress?.("Fetching crypto exchange rates...");
   const cryptoRates = await fetchCryptoRates();
   
-  onProgress?.("Building crypto edges...");
-  // Crypto edges
-  for (const [pair, rate] of cryptoRates) {
-    const [src, dst] = pair.split("-");
-    const legal = checkLegality(src, dst, geminiPairs);
-    addEdge(src, dst, rate, legal);
+  onProgress?.("Building crypto edges from Binance...");
+  // Crypto edges from Binance (and fiat-crypto if available)
+  for (const [src, dst, rate] of cryptoRates) {
+    addTrade(src, dst, rate, geminiPairs);
   }
   
   onProgress?.("Adding reciprocal edges...");
-  // Add reciprocal edges
-  const edgesToAdd: Array<[string, string, number, boolean]> = [];
+  // Reciprocal edges for all edges added so far
+  const edgesToAdd: Array<[string, string, number]> = [];
   
   for (const [src, dstMap] of graph.edges) {
     for (const [dst, edge] of dstMap) {
       const hasReverse = graph.edges.get(dst)?.has(src);
       if (!hasReverse && edge.rate !== 0) {
         const reverseRate = 1.0 / edge.rate;
-        const legal = checkLegality(dst, src, geminiPairs);
-        edgesToAdd.push([dst, src, reverseRate, legal]);
+        edgesToAdd.push([dst, src, reverseRate]);
       }
     }
   }
   
-  for (const [src, dst, rate, legal] of edgesToAdd) {
-    addEdge(src, dst, rate, legal);
+  for (const [src, dst, rate] of edgesToAdd) {
+    addTrade(src, dst, rate, geminiPairs);
   }
   
-  onProgress?.(`Graph ready: ${graph.nodes.size} currencies, ${Array.from(graph.edges.values()).reduce((sum, map) => sum + map.size, 0)} edges`);
+  const edgeCount = Array.from(graph.edges.values()).reduce((sum, map) => sum + map.size, 0);
+  onProgress?.(`Graph ready: ${graph.nodes.size} currencies/cryptos, ${edgeCount} edges`);
   
   return graph;
 }
