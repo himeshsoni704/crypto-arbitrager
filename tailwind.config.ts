@@ -54,14 +54,17 @@ export default {
       },
       backgroundImage: {
         'gradient-primary': 'var(--gradient-primary)',
+        'gradient-button': 'var(--gradient-button)',
         'gradient-subtle': 'var(--gradient-subtle)',
         'gradient-glow': 'var(--gradient-glow)',
         'gradient-orange': 'var(--gradient-orange)',
+        'gradient-circular': 'var(--gradient-circular)',
       },
       boxShadow: {
         'glow': 'var(--shadow-glow)',
         'card': 'var(--shadow-card)',
         'glass': 'var(--shadow-glass)',
+        'button': 'var(--shadow-button)',
       },
       backdropBlur: {
         'glass': 'var(--glass-blur)',

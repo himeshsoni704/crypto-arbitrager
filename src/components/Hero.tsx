@@ -29,7 +29,7 @@ export const Hero = ({ onGetStarted }: HeroProps) => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-300">
           <Button 
             size="lg" 
-            className="shadow-glow bg-gradient-primary glass border-primary/50 hover:border-primary text-primary-foreground font-semibold glass-hover backdrop-blur-xl opacity-90 hover:opacity-100"
+            className="bg-gradient-button shadow-button border border-primary/60 hover:border-primary hover:shadow-glow text-primary-foreground font-semibold backdrop-blur-sm transition-all duration-300"
             onClick={onGetStarted}
           >
             <TrendingUp className="mr-2 h-5 w-5" />

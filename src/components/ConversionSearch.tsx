@@ -95,7 +95,7 @@ export const ConversionSearch = ({ onSearch, isLoading }: ConversionSearchProps)
         
         <Button 
           type="submit" 
-          className="w-full bg-gradient-primary glass border-primary/50 hover:border-primary text-primary-foreground font-semibold shadow-glow glass-hover backdrop-blur-xl opacity-90 hover:opacity-100"
+          className="w-full bg-gradient-button shadow-button border border-primary/60 hover:border-primary hover:shadow-glow text-primary-foreground font-semibold backdrop-blur-sm transition-all duration-300"
           disabled={isLoading || source === target}
         >
           {isLoading ? (

@@ -18,7 +18,7 @@ All colors MUST be HSL.
     --popover-foreground: 30 100% 95%;
 
     --primary: 25 100% 60%;
-    --primary-foreground: 15 30% 5%;
+    --primary-foreground: 15 15% 10%;
 
     --secondary: 30 95% 50%;
     --secondary-foreground: 15 30% 5%;
@@ -47,15 +47,18 @@ All colors MUST be HSL.
     --glass-blur: 16px;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(25, 100%, 60%), hsl(35, 100%, 55%));
+    --gradient-primary: linear-gradient(135deg, hsl(25, 100%, 55%), hsl(35, 100%, 60%));
+    --gradient-button: linear-gradient(135deg, rgba(255, 140, 60, 0.85), rgba(255, 165, 80, 0.85));
     --gradient-subtle: linear-gradient(180deg, rgba(30, 15, 5, 0.5), rgba(15, 10, 5, 0.3));
     --gradient-glow: radial-gradient(circle at 50% 0%, hsla(25, 100%, 60%, 0.15), transparent 70%);
     --gradient-orange: radial-gradient(circle at top right, hsla(25, 100%, 50%, 0.1), transparent 50%);
+    --gradient-circular: radial-gradient(circle at center, hsla(25, 100%, 65%, 0.2) 0%, hsla(30, 100%, 60%, 0.1) 40%, transparent 70%);
 
     /* Shadows */
     --shadow-glow: 0 0 60px hsla(25, 100%, 60%, 0.4), 0 0 30px hsla(35, 100%, 55%, 0.2);
     --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.6);
     --shadow-glass: 0 8px 32px 0 rgba(255, 140, 60, 0.1);
+    --shadow-button: 0 4px 20px rgba(255, 140, 60, 0.4);
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -70,6 +73,7 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     background-image: 
+      radial-gradient(circle at 50% 50%, hsla(25, 100%, 65%, 0.25) 0%, hsla(30, 100%, 60%, 0.12) 30%, transparent 60%),
       radial-gradient(circle at 20% 80%, hsla(25, 100%, 40%, 0.1) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, hsla(35, 100%, 50%, 0.08) 0%, transparent 50%),
       linear-gradient(180deg, hsl(15, 30%, 5%) 0%, hsl(10, 25%, 3%) 100%);
