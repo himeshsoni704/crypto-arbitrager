@@ -18,18 +18,18 @@ export const Hero = ({ onGetStarted }: HeroProps) => {
           <span className="text-sm text-muted-foreground">Legal Compliance Verified</span>
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent animate-in fade-in slide-in-from-bottom-4 duration-1000 drop-shadow-[0_0_30px_rgba(255,140,60,0.5)]">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent animate-in fade-in slide-in-from-bottom-4 duration-1000 drop-shadow-[0_0_30px_rgba(255,140,60,0.5)] opacity-90">
           Multi-Hop FX Arbitrage
         </h1>
         
-        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-150">
+        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-150 opacity-80">
           Discover optimal conversion paths through intelligent multi-trade routing
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-300">
           <Button 
             size="lg" 
-            className="shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground font-semibold glass-hover"
+            className="shadow-glow bg-gradient-primary glass border-primary/50 hover:border-primary text-primary-foreground font-semibold glass-hover backdrop-blur-xl opacity-90 hover:opacity-100"
             onClick={onGetStarted}
           >
             <TrendingUp className="mr-2 h-5 w-5" />

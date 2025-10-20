@@ -33,8 +33,8 @@ export const PathResults = ({ results, source, target, startAmount }: PathResult
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-foreground">Top {results.length} Legal Paths</h2>
-        <Badge className="bg-success text-success-foreground">
+        <h2 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent opacity-90">Top {results.length} Legal Paths</h2>
+        <Badge className="glass bg-success/80 text-success-foreground border-success/50 backdrop-blur-xl">
           <CheckCircle2 className="w-4 h-4 mr-1" />
           Legal
         </Badge>
@@ -56,11 +56,11 @@ export const PathResults = ({ results, source, target, startAmount }: PathResult
         <div className="flex items-center gap-3">
           <TrendingUp className="w-8 h-8 text-primary drop-shadow-[0_0_12px_rgba(255,140,60,0.8)]" />
           <div>
-            <p className="text-sm text-muted-foreground">Best Path Result</p>
-            <p className="text-2xl font-bold text-primary">
+            <p className="text-sm text-muted-foreground opacity-70">Best Path Result</p>
+            <p className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent opacity-90">
               {bestAmount.toFixed(6)} {target}
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground opacity-70">
               from {startAmount.toFixed(2)} {source} ({bestResult.multiplier.toFixed(6)}x multiplier)
             </p>
           </div>
@@ -100,32 +100,32 @@ const PathResultCard = ({
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${isBest ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}`}>
                   {index}
                 </div>
-                <div className="text-left">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
-                    {result.path.map((currency, idx) => (
-                      <span key={idx} className="flex items-center gap-2">
-                        <span className="font-mono font-semibold text-foreground">{currency}</span>
-                        {idx < result.path.length - 1 && <ArrowRight className="w-4 h-4" />}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+            <div className="text-left">
+              <div className="flex items-center gap-2 text-sm text-muted-foreground flex-wrap">
+                {result.path.map((currency, idx) => (
+                  <span key={idx} className="flex items-center gap-2">
+                    <span className="font-mono font-semibold bg-gradient-primary bg-clip-text text-transparent opacity-90">{currency}</span>
+                    {idx < result.path.length - 1 && <ArrowRight className="w-4 h-4 text-primary/70" />}
+                  </span>
+                ))}
+              </div>
+            </div>
               </div>
               <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform ${isOpen ? 'rotate-180' : ''}`} />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-left">
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Starting Amount</p>
-                <p className="font-semibold text-foreground">{startAmount.toFixed(6)} {source}</p>
+                <p className="text-xs text-muted-foreground mb-1 opacity-70">Starting Amount</p>
+                <p className="font-semibold bg-gradient-primary bg-clip-text text-transparent opacity-80">{startAmount.toFixed(6)} {source}</p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Final Amount</p>
-                <p className="font-semibold text-primary">{finalAmount.toFixed(6)} {target}</p>
+                <p className="text-xs text-muted-foreground mb-1 opacity-70">Final Amount</p>
+                <p className="font-semibold bg-gradient-primary bg-clip-text text-transparent opacity-90">{finalAmount.toFixed(6)} {target}</p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Gain Multiplier</p>
-                <p className="font-semibold text-foreground">{result.multiplier.toFixed(6)}x</p>
+                <p className="text-xs text-muted-foreground mb-1 opacity-70">Gain Multiplier</p>
+                <p className="font-semibold bg-gradient-primary bg-clip-text text-transparent opacity-80">{result.multiplier.toFixed(6)}x</p>
               </div>
             </div>
           </div>
@@ -133,28 +133,28 @@ const PathResultCard = ({
 
         <CollapsibleContent>
           <div className="border-t border-primary/20 p-6 glass">
-            <h4 className="text-sm font-semibold text-foreground mb-3">Step-by-Step Breakdown</h4>
+            <h4 className="text-sm font-semibold bg-gradient-primary bg-clip-text text-transparent opacity-90 mb-3">Step-by-Step Breakdown</h4>
             <div className="space-y-2">
               {result.breakdown.map((step, idx) => (
                 <div key={idx} className="flex items-center justify-between p-3 rounded-lg glass border-primary/10">
                   <div className="flex items-center gap-3">
-                    <span className="text-xs text-muted-foreground">#{idx + 1}</span>
+                    <span className="text-xs text-muted-foreground opacity-70">#{idx + 1}</span>
                     <span className="font-mono text-sm">
-                      <span className="text-foreground font-semibold">{step.from}</span>
-                      <ArrowRight className="inline w-4 h-4 mx-2" />
-                      <span className="text-foreground font-semibold">{step.to}</span>
+                      <span className="bg-gradient-primary bg-clip-text text-transparent font-semibold opacity-90">{step.from}</span>
+                      <ArrowRight className="inline w-4 h-4 mx-2 text-primary/70" />
+                      <span className="bg-gradient-primary bg-clip-text text-transparent font-semibold opacity-90">{step.to}</span>
                     </span>
                   </div>
                   <div className="flex items-center gap-4 text-xs">
                     <div>
-                      <span className="text-muted-foreground">Rate: </span>
-                      <span className="font-mono text-foreground">{step.rate.toFixed(8)}</span>
+                      <span className="text-muted-foreground opacity-70">Rate: </span>
+                      <span className="font-mono bg-gradient-primary bg-clip-text text-transparent opacity-80">{step.rate.toFixed(8)}</span>
                     </div>
                     <div>
-                      <span className="text-muted-foreground">Effective: </span>
-                      <span className="font-mono text-foreground">{step.effective.toFixed(8)}</span>
+                      <span className="text-muted-foreground opacity-70">Effective: </span>
+                      <span className="font-mono bg-gradient-primary bg-clip-text text-transparent opacity-80">{step.effective.toFixed(8)}</span>
                     </div>
-                    <Badge variant={step.legal ? "default" : "destructive"} className="text-xs">
+                    <Badge variant={step.legal ? "default" : "destructive"} className="text-xs glass backdrop-blur-xl border-primary/40">
                       {step.legal ? "Legal" : "Illegal"}
                     </Badge>
                   </div>

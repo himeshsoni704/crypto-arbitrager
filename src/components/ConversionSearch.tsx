@@ -42,7 +42,7 @@ export const ConversionSearch = ({ onSearch, isLoading }: ConversionSearchProps)
     <Card className="p-6 glass glass-hover shadow-glass">
       <div className="flex items-center gap-2 mb-6">
         <Search className="w-5 h-5 text-primary drop-shadow-[0_0_8px_rgba(255,140,60,0.6)]" />
-        <h2 className="text-xl font-semibold text-foreground">Conversion Search</h2>
+        <h2 className="text-xl font-semibold bg-gradient-primary bg-clip-text text-transparent opacity-90">Conversion Search</h2>
       </div>
       
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -95,7 +95,7 @@ export const ConversionSearch = ({ onSearch, isLoading }: ConversionSearchProps)
         
         <Button 
           type="submit" 
-          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold shadow-glow glass-hover"
+          className="w-full bg-gradient-primary glass border-primary/50 hover:border-primary text-primary-foreground font-semibold shadow-glow glass-hover backdrop-blur-xl opacity-90 hover:opacity-100"
           disabled={isLoading || source === target}
         >
           {isLoading ? (
